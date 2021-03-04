@@ -4,6 +4,8 @@ import it.iad2.gestauto.dto.AutoDto;
 import it.iad2.gestauto.dto.BolloDto;
 import it.iad2.gestauto.dto.CriterioRicercaDto;
 import it.iad2.gestauto.dto.ListeAutoDto;
+import it.iad2.gestauto.service.GestioneAutoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GestioneAutoController {
 
+    @Autowired
+    GestioneAutoService gestioneAutoService;
+
     @RequestMapping("/inserisci-auto")
     @ResponseBody
     public ListeAutoDto inserisciAuto(@RequestBody AutoDto dto) {
-        throw new UnsupportedOperationException();
+        return gestioneAutoService.inserisciAuto(dto.getAutomobile());
     }
 
     @RequestMapping("/ricerca-auto")

@@ -1,6 +1,9 @@
 import { Automobile } from './automobile';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ListeAutoDto } from './liste-auto-dto';
+import { AutoDto } from './auto-dto';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +26,21 @@ export class AppComponent {
   elimina() { }
 
   aggiungi() {
+    // preparo i dati da inviare al server via DTO
+    let dto: AutoDto = new AutoDto();
+    dto.automobile = this.auto;
 
+    // chiamo il servizio REST
+    let oss: Observable<ListeAutoDto> = this.http.post<ListeAutoDto>(
+      "http://localhost:8080/inserisci-auto",
+      dto
+    );
+    oss.subscribe(v => this.automobili = v.listaAuto);
   }
 
   calcolaBollo() { }
 
   resetDB() { }
-  
+
   aggiorna() { }
 }

@@ -4,26 +4,27 @@ import it.iad2.gestauto.model.Automobile;
 
 public class AutoDto {
 
-    private Automobile auto;
+    private Automobile automobile;
 
     public AutoDto() {
     }
 
-    public AutoDto(Automobile auto) {
-        this.auto = auto;
+    public AutoDto(Automobile automobile) {
+        this.automobile = automobile;
     }
 
-    public Automobile getAuto() {
-        return auto;
+    public Automobile getAutomobile() {
+        return automobile;
     }
 
-    public void setAuto(Automobile auto) {
-        this.auto = auto;
+    public void setAutomobile(Automobile automobile) {
+        this.automobile = automobile;
     }
 
     @Override
     public String toString() {
-        return "AutoDto{" + "auto=" + auto + '}';
+        return "AutoDto{" + "automobile=" + automobile + '}';
     }
+
 
 }
