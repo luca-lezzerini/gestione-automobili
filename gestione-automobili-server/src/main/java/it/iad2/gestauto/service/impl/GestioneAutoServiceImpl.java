@@ -1,6 +1,7 @@
 package it.iad2.gestauto.service.impl;
 
 import it.iad2.gestauto.dto.AutoDto;
+import it.iad2.gestauto.dto.BolloDto;
 import it.iad2.gestauto.dto.ListeAutoDto;
 import it.iad2.gestauto.model.Automobile;
 import it.iad2.gestauto.repository.AutomobileRepository;
@@ -48,5 +49,18 @@ public class GestioneAutoServiceImpl implements GestioneAutoService {
     public ListeAutoDto ricercaAuto(String criterio) {
         List<Automobile> filtrati = automobileRepository.findByTargaContainsOrModelloContains(criterio, criterio);
         return new ListeAutoDto(filtrati);
+    }
+
+    @Override
+    public BolloDto calcolaBollo(Automobile auto) {
+        // mai fidarsi dei dati del client e riprenderli dal DB sempre
+        Automobile autoDB = automobileRepository.getOne(auto.getId());
+        if (autoDB == null) {
+            return new BolloDto();
+        } else {
+            double bollo = autoDB.getCilindrata() / 10.0;
+            System.out.println("Bollo = " + bollo);
+            return new BolloDto(bollo);
+        }
     }
 }

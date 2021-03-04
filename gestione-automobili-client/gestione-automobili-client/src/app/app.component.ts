@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListeAutoDto } from './liste-auto-dto';
 import { AutoDto } from './auto-dto';
+import { BolloDto } from './bollo-dto';
 
 @Component({
   selector: 'app-root',
@@ -61,7 +62,17 @@ export class AppComponent {
     this.auto = new Automobile();
   }
 
-  calcolaBollo() { }
+  calcolaBollo(auto: Automobile) {
+    // preparo i dati per il REST
+    let dto: AutoDto = new AutoDto();
+    dto.automobile = auto;
+    // chiamo il servizio e aggiorno il costo del bollo
+    let obs: Observable<BolloDto> = this.http.post<BolloDto>(
+      "http://localhost:8080/calcola-bollo",
+      dto
+    );
+    obs.subscribe(v => this.bolloAnnuo = v.importo);
+  }
 
   resetDB() { }
 

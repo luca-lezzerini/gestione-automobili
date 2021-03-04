@@ -40,7 +40,7 @@ public class GestioneAutoController {
     @RequestMapping("/calcola-bollo")
     @ResponseBody
     public BolloDto calcolaBollo(@RequestBody AutoDto dto) {
-        throw new UnsupportedOperationException();
+        return gestioneAutoService.calcolaBollo(dto.getAutomobile());
     }
 
     @RequestMapping("/reset-db")
