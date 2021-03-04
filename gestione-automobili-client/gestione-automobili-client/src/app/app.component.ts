@@ -1,4 +1,6 @@
+import { Automobile } from './automobile';
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'gestione-automobili-client';
+
+  auto: Automobile = new Automobile();
+  automobili: Automobile[] = [];
+  ricerca: string = "";
+  bolloAnnuo: number;
+
+  constructor(private http: HttpClient) {
+    this.aggiorna();
+  }
+
+  cerca() { }
+
+  elimina() { }
+
+  aggiungi() {
+
+  }
+
+  calcolaBollo() { }
+
+  resetDB() { }
+  
+  aggiorna() { }
 }
