@@ -52,7 +52,7 @@ public class GestioneAutoController {
     @RequestMapping("/aggiorna-liste")
     @ResponseBody
     public ListeAutoDto aggiornaListe() {
-        throw new UnsupportedOperationException();
+        return gestioneAutoService.aggiornaListe();
     }
 
 }

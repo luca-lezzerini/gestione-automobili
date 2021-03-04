@@ -54,5 +54,9 @@ export class AppComponent {
 
   resetDB() { }
 
-  aggiorna() { }
+  aggiorna() {
+    // chiamo il servizio REST
+    let oss: Observable<ListeAutoDto> = this.http.get<ListeAutoDto>("http://localhost:8080/aggiorna-liste");
+    oss.subscribe(v => this.automobili = v.listaAuto);
+  }
 }
