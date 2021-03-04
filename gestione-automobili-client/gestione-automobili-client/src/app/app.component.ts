@@ -23,7 +23,18 @@ export class AppComponent {
 
   cerca() { }
 
-  elimina() { }
+  elimina(a: Automobile) {
+    // preparo i dati per il servizio REST
+    let dto: AutoDto = new AutoDto();
+    dto.automobile = a;
+
+    // chiamo il servizio REST e con la risposta aggiorno la tabella
+    let ox: Observable<ListeAutoDto> = this.http.post<ListeAutoDto>(
+      "http://localhost:8080/cancella-auto",
+      dto
+    );
+    ox.subscribe(elle => this.automobili = elle.listaAuto);
+  }
 
   aggiungi() {
     // preparo i dati da inviare al server via DTO

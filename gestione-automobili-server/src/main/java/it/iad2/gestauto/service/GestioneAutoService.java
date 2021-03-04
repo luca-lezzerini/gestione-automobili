@@ -7,5 +7,7 @@ public interface GestioneAutoService {
 
     ListeAutoDto inserisciAuto(Automobile auto);
     
+    ListeAutoDto cancellaAuto(Automobile auto);
+    
     ListeAutoDto aggiornaListe();
 }
