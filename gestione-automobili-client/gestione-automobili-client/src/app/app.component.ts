@@ -59,6 +59,7 @@ export class AppComponent {
       dto
     );
     oss.subscribe(v => this.automobili = v.listaAuto);
+    this.ricerca = "";
     this.auto = new Automobile();
   }
 
