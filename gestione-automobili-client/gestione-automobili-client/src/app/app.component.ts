@@ -1,3 +1,4 @@
+import { CriterioRicercaDto } from './criterio-ricerca-dto';
 import { Automobile } from './automobile';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +22,17 @@ export class AppComponent {
     this.aggiorna();
   }
 
-  cerca() { }
+  cerca() {
+    // preparo i dati per il server
+    let dto: CriterioRicercaDto = new CriterioRicercaDto();
+    dto.stringa = this.ricerca;
+    // chiamo il servizio REST e aggiorno la tabella
+    let ox: Observable<ListeAutoDto> = this.http.post<ListeAutoDto>(
+      "http://localhost:8080/ricerca-auto",
+      dto
+    );
+    ox.subscribe(elle => this.automobili = elle.listaAuto);
+  }
 
   elimina(a: Automobile) {
     // preparo i dati per il servizio REST

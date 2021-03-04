@@ -28,7 +28,7 @@ public class GestioneAutoController {
     @RequestMapping("/ricerca-auto")
     @ResponseBody
     public ListeAutoDto ricercaAuto(@RequestBody CriterioRicercaDto dto) {
-        throw new UnsupportedOperationException();
+        return gestioneAutoService.ricercaAuto(dto.getStringa());
     }
 
     @RequestMapping("/cancella-auto")

@@ -31,8 +31,6 @@ public class GestioneAutoServiceImpl implements GestioneAutoService {
         // aggiorna la lista
         return aggiornaListe();
     }
-    
-    
 
     @Override
     public ListeAutoDto aggiornaListe() {
@@ -46,4 +44,9 @@ public class GestioneAutoServiceImpl implements GestioneAutoService {
         return dto;
     }
 
+    @Override
+    public ListeAutoDto ricercaAuto(String criterio) {
+        List<Automobile> filtrati = automobileRepository.findByTargaContainsOrModelloContains(criterio, criterio);
+        return new ListeAutoDto(filtrati);
+    }
 }
