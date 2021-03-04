@@ -36,6 +36,7 @@ export class AppComponent {
       dto
     );
     oss.subscribe(v => this.automobili = v.listaAuto);
+    this.auto = new Automobile();
   }
 
   calcolaBollo() { }
